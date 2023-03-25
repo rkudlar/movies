@@ -1,0 +1,18 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+Documentation:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'config/**/*'
+    - 'bin/*'
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
