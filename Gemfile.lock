@@ -46,6 +46,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_storage_validations (1.0.3)
+      activejob (>= 5.2.0)
+      activemodel (>= 5.2.0)
+      activestorage (>= 5.2.0)
+      activesupport (>= 5.2.0)
     activejob (7.0.4.3)
       activesupport (= 7.0.4.3)
       globalid (>= 0.3.6)
@@ -202,6 +207,8 @@ GEM
     rubocop-rspec (2.16.0)
       rubocop (~> 1.33)
     ruby-progressbar (1.13.0)
+    shoulda-matchers (5.3.0)
+      activesupport (>= 5.2.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -234,6 +241,7 @@ PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
+  active_storage_validations (~> 1.0, >= 1.0.3)
   bootsnap
   cssbundling-rails
   debug
@@ -250,6 +258,7 @@ DEPENDENCIES
   rubocop (~> 1.41.1)
   rubocop-rails (~> 2.17.3)
   rubocop-rspec (~> 2.16.0)
+  shoulda-matchers (~> 5.3.0)
   sprockets-rails
   stimulus-rails
   turbo-rails
