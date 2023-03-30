@@ -1,0 +1,13 @@
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  <% @movies.each do |movie| %>
+    <div class="col">
+      <div class="card shadow-sm">
+        <%= image_tag(url_for(movie.images.first), size: '400x300') %>
+        <div class="card-body" style="height: 8rem;">
+          <p class="card-title fw-bold"><%= movie.title %></p>
+          <p class="card-text"><%= truncate(movie.description, length: 100, omission: '...') %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
