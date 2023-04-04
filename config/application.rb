@@ -33,5 +33,8 @@ module Movies
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    ActionView::Base.field_error_proc = proc do |html_tag|
+      html_tag.gsub("form-control", "form-control is-invalid").html_safe
+    end
   end
 end

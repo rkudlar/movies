@@ -27,6 +27,11 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'active_storage_validations', '~> 1.0', '>= 1.0.3'
 
+gem 'devise', '~> 4.9'
+gem 'omniauth', '2.0.0'
+gem 'omniauth-google-oauth2', '~> 1.1', '>= 1.1.1'
+gem 'omniauth-rails_csrf_protection', '1.0.0'
+
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'pry', '~> 0.14.1'
