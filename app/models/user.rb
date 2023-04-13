@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :movies, dependent: :destroy
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
@@ -6,12 +8,12 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0, 20]
-      user.username = auth.info.name.parameterize
-    end.tap do |user|
-      user.update!(token: auth.credentials.token)
+    user = find_or_create_by(provider: auth.provider, uid: auth.uid) do |u|
+      u.email = auth.info.email
+      u.password = Devise.friendly_token[0, 20]
+      u.username = auth.info.name.parameterize
     end
+    user.update!(token: auth.credentials.token)
+    user
   end
 end

@@ -1,0 +1,24 @@
+<%= form_with url: fill_with_omdb_movies_path(movie_id: @movie) do |f| %>
+  <hr>
+
+  <p>You can prefill the movie data by specifying the title and year</p>
+
+  <div class="row">
+    <div class="col-3">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Year</span>
+        <%= f.text_field :year, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col">
+      <%= f.submit 'Search and fill', class: 'btn btn-dark' %>
+    </div>
+  </div>
+  <hr>
+<% end %>

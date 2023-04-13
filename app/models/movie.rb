@@ -1,9 +1,16 @@
+require 'open-uri'
+
 class Movie < ApplicationRecord
-  has_many_attached :images
-  has_one_attached :video
+  belongs_to :user
+  has_one_attached :image
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :images, content_type: %i[png jpg jpeg], attached: true
-  validates :video, content_type: %i[mp4 avi]
+  validates :image, content_type: %i[png jpg jpeg], attached: true
+
+  attr_accessor :image_url
+
+  def attach_omdb_image(image)
+    self.image.attach(io: URI.open(image), filename: File.basename(image))
+  end
 end

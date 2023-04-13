@@ -1,0 +1,75 @@
+<%= form_with model: @movie, id: 'movie_form', data: { controller: 'movie-form' } do |f| %>
+  <div class="form-group row">
+    <%= f.label :title, class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10 my-1">
+      <%= f.text_field :title, class: 'form-control' %>
+      <div class="invalid-feedback">Please input value</div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :released, class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10 my-1">
+      <%= f.date_field :released, class: 'form-control' %>
+      <div class="invalid-feedback">Please input value</div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :runtime, class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10 my-1">
+      <%= f.text_field :runtime, class: 'form-control time_minutes', data: { movie_form_target: 'runtime' } %>
+      <div class="invalid-feedback">Please input value</div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :genre, class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10 my-1">
+      <%= f.text_field :genre, class: 'form-control' %>
+      <div class="invalid-feedback">Please input value</div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :description, class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10 my-1">
+      <%= f.text_area :description, class: 'form-control' %>
+      <div class="invalid-feedback">Please input value</div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :actors, class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10 my-1">
+      <%= f.text_field :actors, class: 'form-control' %>
+      <div class="invalid-feedback">Please input value</div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :director, class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10 my-1">
+      <%= f.text_field :director, class: 'form-control' %>
+      <div class="invalid-feedback">Please input value</div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :imdb_rating, class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10 my-1">
+      <%= f.text_field :imdb_rating, class: 'form-control rating', data: { movie_form_target: 'imdbRating' } %>
+      <div class="invalid-feedback">Please input value</div>
+    </div>
+  </div>
+
+  <div class="form-group row my-1">
+    <%= f.label :image, class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10 my-1">
+      <%= hidden_field_tag :image_url, @movie&.image_url %>
+      <%= f.file_field :image, class: 'form-control form-control-file' %>
+    </div>
+    <div class="invalid-feedback">Please select image</div>
+  </div>
+  <%= f.submit class: 'btn btn-dark mb-3' %>
+<% end %>
