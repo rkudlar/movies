@@ -1,0 +1,7 @@
+omdb:
+  url: http://www.omdbapi.com/
+  api_key: <%= ENV['OMDB_API_KEY'] %>
+
+google_oauth:
+  client_id: <%= ENV['GOOGLE_OAUTH_CLIENT_ID'] %>
+  client_secret: <%= ENV['GOOGLE_OAUTH_CLIENT_SECRET'] %>

@@ -2,10 +2,12 @@
   <% @movies.each do |movie| %>
     <div class="col">
       <div class="card shadow-sm">
-        <%= image_tag(url_for(movie.images.first), size: '400x300') %>
-        <div class="card-body" style="height: 8rem;">
+        <%= image_tag(url_for(movie.image), size: '400x300', class: 'card-img-top') %>
+        <div class="card-body">
           <p class="card-title fw-bold"><%= movie.title %></p>
           <p class="card-text"><%= truncate(movie.description, length: 100, omission: '...') %></p>
+          <%= link_to 'Show', movie_path(movie), class: 'btn btn-dark' %>
+          <%= link_to 'Edit', edit_movie_path(movie), class: 'btn btn-dark' %>
         </div>
       </div>
     </div>

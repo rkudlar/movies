@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-4">
+    <%= image_tag(url_for(@movie.image), size: '350x450', class: 'rounded mx-auto d-block') %>
+  </div>
+  <div class="col">
+    <p class="fs-2 fw-bold"><%= @movie.title %></p>
+    <hr class="m-0">
+    <div class="row">
+      <div class="col">
+        <p class="fs-5 my-2"><b>Released:</b> <%= @movie.released %></p>
+      </div>
+      <div class="col">
+        <p class="fs-5 my-2"><b>IMDB Rating:</b> <%= @movie.imdb_rating ? "#{@movie.imdb_rating}/10" : 'unknown' %></p>
+      </div>
+    </div>
+    <hr class="m-0">
+    <div class="row">
+      <div class="col">
+        <p class="fs-5 my-2"><b>Genre:</b> <%= @movie.genre %></p>
+      </div>
+      <div class="col">
+        <p class="fs-5 my-2"><b>Runtime:</b> <%= @movie.runtime %></p>
+      </div>
+    </div>
+    <hr class="m-0">
+    <p class="fs-5 my-2"><b>Actors:</b> <%= @movie.actors %></p>
+    <hr class="m-0">
+    <p class="fs-5 my-2"><b>Director:</b> <%= @movie.director %></p>
+    <hr class="m-0">
+    <p class="mt-3 fs-5"><%= @movie.description %></p>
+    <% if current_user == @movie.user %>
+      <div class="mt-5">
+        <%= link_to '<i class="bi bi-pencil-square"></i> Edit'.html_safe, edit_movie_path(@movie), class: 'btn btn-dark me-1' %>
+        <%= link_to '<i class="bi bi-trash3-fill"></i> Delete'.html_safe, movie_path(@movie), class: 'btn btn-dark ms-1',
+                    data:{ turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+  </div>
+</div>

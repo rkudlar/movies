@@ -32,6 +32,8 @@ gem 'omniauth', '2.0.0'
 gem 'omniauth-google-oauth2', '~> 1.1', '>= 1.1.1'
 gem 'omniauth-rails_csrf_protection', '1.0.0'
 
+gem 'config', '~> 4.1'
+
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'pry', '~> 0.14.1'
