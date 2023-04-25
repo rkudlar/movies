@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'movies#index'
 
   resources :movies do
+    resources :comments, only: %i[edit update create destroy]
     post :fill_with_omdb, on: :collection
   end
 end

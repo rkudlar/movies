@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-4">
     <%= image_tag(url_for(@movie.image), size: '350x450', class: 'rounded mx-auto d-block') %>
+    <%= render('comments/comments') %>
   </div>
   <div class="col">
     <p class="fs-2 fw-bold"><%= @movie.title %></p>
