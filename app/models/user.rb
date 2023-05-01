@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_many :movies, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  has_one_attached :avatar
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]

@@ -6,4 +6,9 @@ Rails.application.routes.draw do
     resources :comments, only: %i[edit update create destroy]
     post :fill_with_omdb, on: :collection
   end
+
+  namespace :profiles do
+    get 'edit'
+    patch 'update'
+  end
 end
