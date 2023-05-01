@@ -7,6 +7,8 @@ class MoviesController < ApplicationController
 
   def show
     movie
+    @comments = movie.comments.order(:id)
+    @comment = Comment.new
   end
 
   def new
@@ -32,7 +34,7 @@ class MoviesController < ApplicationController
       movie.attach_omdb_image(params[:image_url]) if movie_params[:image].blank? && params[:image_url].present?
       redirect_to movie_path(movie)
     else
-      render :edit, status: :forbidden
+      render :edit, status: :unprocessable_entity
     end
   end
 

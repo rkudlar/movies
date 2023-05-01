@@ -1,0 +1,23 @@
+<%= turbo_frame_tag 'comments' do %>
+  <%= render('comments/form') if user_signed_in? %>
+  <% @comments.each do |comment| %>
+    <div class="card my-2" id="comment_<%= comment.id %>">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-10">
+            <%= comment.user.username %>
+          </div>
+          <div class="col-2 text-end">
+            <% if current_user == comment.user %>
+              <%= link_to '<i class="bi bi-pencil-square"></i>'.html_safe, edit_movie_comment_path(comment.movie, comment), class: 'link-dark' %>
+              <%= link_to '<i class="bi bi-trash3-fill"></i>'.html_safe, movie_comment_path(comment.movie, comment), class: 'link-dark', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-text"><%= comment.body %></p>
+      </div>
+    </div>
+  <% end %>
+<% end %>

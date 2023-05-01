@@ -7,7 +7,7 @@
           <p class="card-title fw-bold"><%= movie.title %></p>
           <p class="card-text"><%= truncate(movie.description, length: 100, omission: '...') %></p>
           <%= link_to 'Show', movie_path(movie), class: 'btn btn-dark' %>
-          <%= link_to 'Edit', edit_movie_path(movie), class: 'btn btn-dark' %>
+          <%= link_to 'Edit', edit_movie_path(movie), class: 'btn btn-dark' if current_user == movie.user %>
         </div>
       </div>
     </div>

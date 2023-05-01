@@ -1,0 +1,16 @@
+<%= turbo_frame_tag "comment_#{@comment&.id}" do %>
+  <%= form_with model: @comment, url: @comment.new_record? ? movie_comments_path(@movie) : movie_comment_path(@movie) do |f| %>
+    <div class="form-group my-3">
+      <div class="row d-inline-flex">
+        <%= f.label :body, 'Comment:', class: 'col-form-label' %>
+        <div class="col">
+          <%= f.text_field :body, class: 'form-control' %>
+          <div class="invalid-feedback">Please input comment body</div>
+        </div>
+        <div class="col">
+          <%= f.submit class: 'btn btn-dark' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
