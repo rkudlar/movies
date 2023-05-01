@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import MovieFormController from "./movie_form_controller"
 application.register("movie-form", MovieFormController)
+
+import HeaderController from "./header_controller"
+application.register("header", HeaderController)

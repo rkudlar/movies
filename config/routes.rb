@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :movies do
     resources :comments, only: %i[edit update create destroy]
+    post :search, on: :collection
     post :fill_with_omdb, on: :collection
   end
 
