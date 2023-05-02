@@ -50,6 +50,11 @@ class MoviesController < ApplicationController
     end
   end
 
+  def search
+    @movies = Movie.where('title ILIKE ? OR description ILIKE ?', "%#{params[:search]}%", "%#{params[:search]}%")
+    render :index, status: :see_other
+  end
+
   private
 
   def movie_params
