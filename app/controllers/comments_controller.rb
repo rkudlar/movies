@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action -> { authorization(comment) }, only: %i[edit update destroy]
+
   def edit
     render_form
   end
