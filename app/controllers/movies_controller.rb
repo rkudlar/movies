@@ -51,7 +51,8 @@ class MoviesController < ApplicationController
   end
 
   def search
-    @movies = Movie.where('title ILIKE ? OR description ILIKE ?', "%#{params[:search]}%", "%#{params[:search]}%")
+    @movies = Movie.where(Movie.arel_table[:title].matches("%#{params[:search]}%")
+                               .or(Movie.arel_table[:description].matches("%#{params[:search]}%")))
     render :index, status: :see_other
   end
 
