@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :check_authorization, only: %i[edit update destroy]
+  before_action -> { authorization(movie) }, only: %i[edit update destroy]
 
   def index
     @movies = Movie.all
@@ -65,11 +65,5 @@ class MoviesController < ApplicationController
 
   def movie
     @movie ||= Movie.find(params[:id])
-  end
-
-  def check_authorization
-    return if current_user == movie.user
-
-    redirect_to root_url
   end
 end
