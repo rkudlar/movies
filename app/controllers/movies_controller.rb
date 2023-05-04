@@ -23,8 +23,10 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params.merge(user_id: current_user.id))
     @movie.attach_omdb_image(params[:image_url]) if movie_params[:image].blank? && params[:image_url].present?
     if @movie.save
+      flash[:success] = 'Movie added !'
       redirect_to root_path
     else
+      flash[:danger] = 'Failed to add movie !'
       render :new, status: :unprocessable_entity
     end
   end
@@ -32,14 +34,17 @@ class MoviesController < ApplicationController
   def update
     if movie.update(movie_params)
       movie.attach_omdb_image(params[:image_url]) if movie_params[:image].blank? && params[:image_url].present?
+      flash[:success] = 'Movie updated !'
       redirect_to movie_path(movie)
     else
+      flash[:danger] = 'Failed to update movie !'
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     movie.destroy!
+    flash[:success] = 'Movie successfully deleted'
     redirect_to root_path
   end
 
